@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <RelativeLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <EditText
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/query"
+            android:layout_alignBottom="@+id/query"
+            android:layout_alignTop="@+id/query"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:padding="4dp"
+            android:textSize="18sp" />
+
+        <Button android:id="@+id/query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="?colorAccent"
+            android:text="翻译"
+            />
+
+    </RelativeLayout>
+
+
+    <include layout="@layout/include_recyclerview"/>
+
+    <TextView android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:background="@color/White"
+        android:visibility="gone"/>
+
+</LinearLayout>

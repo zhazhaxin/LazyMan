@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:progress="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        progress:matProg_barColor="?colorAccent"
+        progress:matProg_progressIndeterminate="true"
+        />
+
+</LinearLayout>

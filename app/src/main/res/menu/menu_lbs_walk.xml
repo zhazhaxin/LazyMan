@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/normal"
+        android:title="标准模式"
+        app:showAsAction="never" />
+    <item android:id="@+id/satellite"
+        android:title="卫星模式"
+        app:showAsAction="never" />
+    <item android:id="@+id/night"
+        android:title="夜景模式"
+        app:showAsAction="never" />
+
+</menu>

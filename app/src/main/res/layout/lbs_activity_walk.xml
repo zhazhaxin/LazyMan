@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/cyan"
+        app:theme="@style/Theme.AppCompat.NoActionBar" />
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="72dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp">
+
+        <TextView
+            android:id="@+id/nearby"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ic_nearby"
+            android:gravity="center_vertical"
+            android:text="附近" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/navigation"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@drawable/ic_navigation"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:text="导航" />-->
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

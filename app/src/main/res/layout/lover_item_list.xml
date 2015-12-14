@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:background="@color/White" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/ic_point"/>
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_lover_item"
+        android:minHeight="72dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/loveImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:roundAsCircle="true"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/loveImg"
+            android:layout_margin="8dp"
+            tools:text="非常适合安卓用" />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            tools:text="alien" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loveImg"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="13sp"
+            tools:text="懒人图库精心编辑的便签图片素材专辑,清晰无水印,全部免费下载。... 带便签的笔记本PSD分层素材 便签和大头针PSD分层素材 精美3D风格商务图标矢量素材 桌面纸张背景矢量" />
+
+        <LinearLayout android:id="@+id/viewImgs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_below="@+id/content">
+
+            <cn.hotwoo.alien.servicelife.widget.WrapperGridView
+                android:id="@+id/showimg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:layout_margin="8dp"
+                android:horizontalSpacing="2dp"
+                android:verticalSpacing="2dp"
+                android:numColumns="3" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/viewImgs"
+            tools:text="15-9-8 14:20" />
+    </RelativeLayout>
+
+
+</LinearLayout>

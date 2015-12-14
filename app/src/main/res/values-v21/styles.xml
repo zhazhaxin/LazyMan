@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/cyan</item>
+        <item name="colorPrimaryDark">@color/LigthBuleDark</item>
+        <item name="colorAccent">@color/green</item>
+
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+    </style>
+
+</resources>

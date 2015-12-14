@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="clockTitle">
+        <item>自定义</item>
+        <item>起床闹钟</item>
+        <item>纪念日</item>
+    </array>
+
+    <array name="clockTime">
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+        <item>周日</item>
+    </array>
+</resources>

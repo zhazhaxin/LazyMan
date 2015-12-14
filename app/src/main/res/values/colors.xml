@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="Pink">#e91e63</color>
+    <color name="White">#fff</color>
+    <color name="Gray">#9e9e9e</color>
+
+
+    <!--progressbar-->
+    <color name="red">#FFC93437</color>
+    <color name="blue">#FF375BF1</color>
+    <color name="yellow">#FFF7D23E</color>
+    <color name="green">#ff34A350</color>
+    <color name="greenDark">#ff34A350</color>
+
+    <color name="LigthBule">#03a9f4</color>
+    <color name="LigthBuleDark">#0288d1</color>
+
+    <color name="indigo">#3f51b5</color>
+    <color name="indigoDark">#303f9f</color>
+
+    <color name="cyan">#4fc3f7</color>
+    <color name="cyanDark">#009688</color>
+
+    <color name="GrayLight">#339e9e9e</color>
+    <color name="GrayLightest">#f1f1f1</color>
+
+    <color name="MilkyWhite">#fff9f9f9</color>
+    <color name="transparentWhite">#B3ffffff</color>
+    <color name="transparent">#0000</color>
+
+    <color name="GreyBlack">#424242</color>
+
+</resources>

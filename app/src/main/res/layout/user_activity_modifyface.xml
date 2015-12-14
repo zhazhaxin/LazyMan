@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/include_toolbar"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/face"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        fresco:actualImageScaleType="focusCrop"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="?colorPrimary">
+
+        <TextView android:id="@+id/album"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:text="相册"
+            android:gravity="center"
+            android:textColor="@color/White"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/White"/>
+
+        <TextView android:id="@+id/camera"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:text="相机"
+            android:gravity="center"
+            android:textColor="@color/White"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/White"/>
+
+        <TextView android:id="@+id/net"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="16sp"
+            android:text="网络"
+            android:gravity="center"
+            android:textColor="@color/White"/>
+
+    </LinearLayout>
+
+</LinearLayout>
