@@ -54,9 +54,9 @@ public class MainPresenter extends BasePresenter<MainActivity> {
                 "夏天最受欢迎的莫过于凉拌菜，清爽下饭，而且金针菇还是高钾低钠食品，可防治高血压，对老年人也有益，但是，金针菇并非人人皆宜，传统医学认为，金针菇性寒，脾胃虚寒、慢性腹泻",
                 "http://www.zg1929.com/uploads/allimg/120321/7-120321153511624.jpg",
                 "http://hqgj1.package.qunar.com/user/id=2568732308&abt=a#tf=tejiaqunar", 1445132262);
-        relaxs[2] = new News("植物大战僵尸",
-                "这道汤算是老公”自创“的菜式~~~~O(∩_∩)O~~食材都是我喜欢的~~煎得香香的豆腐块，",
-                "http://cdn.t02.pic.sogou.com/e44b46f429271850-25dcd0381f84da38-c5c5d39c0a1b706df684522bae2ef445.jpg",
+        relaxs[2] = new News("枪战射击游戏",
+                "好玩死啦，各种炫酷的技能",
+                "http://img04.sogoucdn.com/app/a/100520093/28f3e1e21024984e-ab5a27a53091a231-ff73fe820ee24e0d317c0996b1504d91.jpg",
                 "http://www.543.cn/introduce/297030", 1445132262);
 
         getView().setRelaxData(relaxs);
@@ -66,11 +66,11 @@ public class MainPresenter extends BasePresenter<MainActivity> {
         News[] study = new News[3];
         study[0] = new News("OkHttp：Java/Android的高效HTTP库",
                 "OkHttp 是一个高效的HTTP库，适用于Android 和 Java 应用，通过它可以向服务器请求(GET)数据、发送（POST）数据 :",
-                "http://cdn.t03.pic.sogou.com/2bf35c20edac1a00-09f0f79c20b93d6c-6012c43db90f5c522166dc989188f1b4.jpg",
+                "http://i04.pic.sogou.com/ab89fbb1da652089",
                 "http://codecloud.net/java-android-okhttp-6258.html", 1445132262);
         study[1] = new News("优秀程序员的 18 大准则",
                 "经过多年的积累，我发现，下面这些基本的指导法则，可以帮助我成为一个更加高效的程序员。",
-                "http://cdn.t03.pic.sogou.com/ac7866a5d81356b1-9337605ec0f2681c-120056dedbfbfeda11091d52f86cd63f.jpg",
+                "http://i02.pictn.sogoucdn.com/6795ecffc4c2a489",
                 "http://codecloud.net/18-good-programming-principles-6270.html", 1445132262);
         study[2] = new News("胸大睡觉会不舒服吗?",
                 "在Android 中如何实现爆炸效果的 Views呢，来看看下面要推荐的开源项目吧。，",

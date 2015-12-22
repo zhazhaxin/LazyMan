@@ -21,14 +21,14 @@ public class LaunchActivity extends BaseActivity {
 
     @Bind(R.id.bg)
     SimpleDraweeView bg;
-    public static final String IMG_URL = "http://alien.hotwoo.cn/img/launch_bg.jpg";
+    public final static String LAUNCH_IMG = "http://alien95.cn/img/launch_bg.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_launch);
         ButterKnife.bind(this);
-        bg.setImageURI(Uri.parse(IMG_URL));
+        bg.setImageURI(Uri.parse(LAUNCH_IMG));
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

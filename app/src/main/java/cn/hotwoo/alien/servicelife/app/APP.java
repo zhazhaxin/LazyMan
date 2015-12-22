@@ -25,11 +25,11 @@ public class APP extends Application {
         mApplicationContext=this;
 
         Utils.init(this);
-        Utils.setDebugtag("ServiceLife");
+        Utils.setDebugtag("LazyMan");
         FileManager.init(this);
 
         RequestManager.getInstance().init(this);
-        RequestManager.getInstance().setDebugMode(true, "LifeNet");
+        RequestManager.getInstance().setDebugMode(true, "LazyManNet");
 
         Fresco.initialize(this);
         ActiveAndroid.initialize(this);
