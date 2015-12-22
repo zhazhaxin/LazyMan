@@ -24,6 +24,8 @@ public class LaunchActivity extends BaseActivity {
     public final static String LAUNCH_IMG = "http://alien95.cn/img/launch_bg.jpg";
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
