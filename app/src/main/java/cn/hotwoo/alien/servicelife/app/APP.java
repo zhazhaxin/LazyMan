@@ -27,15 +27,11 @@ public class APP extends Application {
         Utils.init(this);
         Utils.setDebugtag("LazyMan");
         FileManager.init(this);
-
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(true, "LazyManNet");
-
         Fresco.initialize(this);
         ActiveAndroid.initialize(this);
-
         AbsModel.init(this);
-
         OSSManager.init(mApplicationContext);
     }
 
