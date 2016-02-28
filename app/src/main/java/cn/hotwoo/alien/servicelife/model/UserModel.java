@@ -18,6 +18,7 @@ import de.greenrobot.event.EventBus;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by alien on 2015/8/13.
@@ -70,10 +71,7 @@ public class UserModel extends AbsModel {
      * @param password
      */
     public Observable<User> login(String name, String password) {
-        return ServiceAPIModule.getInstance()
-                .providerServiceAPI()
-                .login(name, password)
-                .compose(new SchedulerTransformer<User>());
+        return ServiceAPIModule.getInstance().providerServiceAPI().login(name, password).compose(new SchedulerTransformer<User>());
     }
 
     /**
@@ -84,6 +82,7 @@ public class UserModel extends AbsModel {
      */
     public void register(String name, String password, Observer<ResponseInfo> observer) {
         ServiceAPIModule.getInstance().providerServiceAPI().register(name, password, API.DEFAULT_FACE)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }

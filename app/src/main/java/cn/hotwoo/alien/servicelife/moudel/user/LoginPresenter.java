@@ -6,7 +6,7 @@ import cn.hotwoo.alien.servicelife.app.BasePresenter;
 import cn.hotwoo.alien.servicelife.model.UserModel;
 import cn.hotwoo.alien.servicelife.model.bean.User;
 import cn.hotwoo.alien.servicelife.util.Utils;
-import rx.Observer;
+import rx.functions.Action1;
 
 /**
  * Created by alien on 2015/8/13.
@@ -21,34 +21,15 @@ public class LoginPresenter extends BasePresenter<LoginActivity> {
     public void login(String name, String password) {
         getView().showProgress();
         UserModel.getInstance().login(name, password)
-                .subscribe(new Observer<User>() {
+                .subscribe(new Action1<User>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Utils.Toast("网络错误");
-                    }
-
-                    @Override
-                    public void onNext(User user) {
+                    public void call(User user) {
                         if (user.getId() != 0) {
                             Utils.Toast("登录成功");
                             UserModel.getInstance().saveUserToFile(user);
                         }
                     }
                 });
-//                .subscribe(new Action1<User>() {
-//                    @Override
-//                    public void call(User user) {
-//                        if (user.getId() != 0) {
-//                            Utils.Toast("登录成功");
-//                            UserModel.getInstance().saveUserToFile(user);
-//                        }
-//                    }
-//                });
     }
 
     public void register() {

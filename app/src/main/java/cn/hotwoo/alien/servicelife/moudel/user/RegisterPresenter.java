@@ -28,7 +28,7 @@ public class RegisterPresenter extends BasePresenter<RegisterActivity> {
 
             @Override
             public void onError(Throwable e) {
-
+                Utils.Log("register--Throwable:" + e.getMessage());
             }
 
             @Override
