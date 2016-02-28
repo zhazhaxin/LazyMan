@@ -17,7 +17,6 @@ public abstract class AbsModel {
             NewsModel.class,
             MixModel.class,
             DictionaryModel.class,
-            LocationModel.class,
             LoveModel.class,
             BannerModel.class
     };

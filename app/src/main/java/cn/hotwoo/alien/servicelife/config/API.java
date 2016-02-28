@@ -22,12 +22,11 @@ public class API {
     public final static String ALIYUN_EDNPOINT = "http://omnipotence.oss-cn-qingdao.aliyuncs.com";
 
 
-    public final static String BASEURL = "http://alien95.cn/lazyman/";
+    public final static String BASEURL = "http://alien95.cn/v1/";
     //user
     public final static String DEFAULT_FACE = "http://img5.imgtn.bdimg.com/it/u=76389672,532196465&fm=11&gp=0.jpg";
     public final static String updateFace = BASEURL + "updateFace.php";
     public final static String getUserData = BASEURL + "getUserData.php";
-    public final static String login = BASEURL + "login.php";
     public final static String register = BASEURL + "register.php";
     public final static String updateUserData = BASEURL + "updateUserData.php";
     public final static String updateNameAndSign = BASEURL + "updateNameAndSign.php";

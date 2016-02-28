@@ -1,10 +1,8 @@
 package cn.hotwoo.alien.servicelife.moudel.lover;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.alibaba.sdk.android.oss.model.OSSException;
 import com.jude.library.imageprovider.ImageProvider;
 
 import java.io.File;
@@ -12,16 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.hotwoo.alien.servicelife.app.BasePresenter;
-import cn.hotwoo.alien.servicelife.config.API;
 import cn.hotwoo.alien.servicelife.model.LoveModel;
 import cn.hotwoo.alien.servicelife.model.UserModel;
 import cn.hotwoo.alien.servicelife.model.bean.Love;
 import cn.hotwoo.alien.servicelife.model.callback.StatusCallback;
-import cn.hotwoo.alien.servicelife.util.FileManager;
 import cn.hotwoo.alien.servicelife.util.Utils;
-import cn.hotwoo.oss.CompressImgTool;
-import cn.hotwoo.oss.OSSManager;
-import cn.hotwoo.oss.callback.CallBack;
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 import me.nereo.multi_image_selector.MultiImageSelectorFragment;
 
@@ -107,38 +100,11 @@ public class LovePublishPresenter extends BasePresenter<LovePublishActivity> imp
 
     @Override
     protected void onResult(int requestCode, int resultCode, Intent data) {
-        provider.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE){
-            if(resultCode == Activity.RESULT_OK){
-                getView().showProgress();
-                List<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-                for(String p:path){
-                    Utils.Log("path:" + p);
-                    imgsPath.add(CompressImgTool.compressImageFile(p, FileManager.getInstance().getCacheDir(FileManager.Dir.IMAGE), 100, 100));
-                }
-                for(String img:imgsPath){
-                    uplaod(img);
-                }
-                imgsPath.clear();
-            }
-        }
+
     }
 
     public synchronized void uplaod(final String path){
-        OSSManager.resumableUpload(path, new CallBack() {
-            @Override
-            public void callback(final String objectKey) {
-                getView().addShowImg("file://" + path);
-                setShowImg(API.ALIYUN_EDNPOINT + File.separator + objectKey);
-                getView().dismissProgress();
-            }
 
-            @Override
-            public void error(OSSException e) {
-                Utils.Toast("添加失败");
-                getView().dismissProgress();
-            }
-        });
     }
 
     @Override
@@ -158,8 +124,7 @@ public class LovePublishPresenter extends BasePresenter<LovePublishActivity> imp
 
     @Override
     public void onCameraShot(File imageFile) {
-        final String path= CompressImgTool.compressImageFile(imageFile.getPath(), FileManager.getInstance().getCacheDir(FileManager.Dir.IMAGE), 100, 100);
-        uplaod(path);
+
     }
 
 }

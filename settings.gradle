@@ -1,1 +1,1 @@
-include ':app', ':ActiveAndroid', ':umeng', ':oss', ':lbs', ':multi-image-selector', ':core'
+include ':app', ':ActiveAndroid', ':multi-image-selector'

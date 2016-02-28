@@ -30,5 +30,6 @@
     <color name="transparent">#0000</color>
 
     <color name="GreyBlack">#424242</color>
+    <color name="md_divider_black">#424242</color>
 
 </resources>

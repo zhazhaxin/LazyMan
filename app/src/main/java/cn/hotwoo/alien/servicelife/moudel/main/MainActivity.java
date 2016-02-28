@@ -16,8 +16,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.beam.bijection.RequiresPresenter;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.DynamicPagerAdapter;
-import com.umeng.fb.FeedbackAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -51,7 +49,6 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     Button moreRelax;
     @Bind(R.id.moreStudy)
     Button moreStudy;
-    private FeedbackAgent agent;
     private RecommendAdapter relaxAdapter;
     private RecommendAdapter studyAdapter;
 
@@ -60,9 +57,6 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
-        UmengUpdateAgent.update(this);
-        agent = new FeedbackAgent(this);
-        agent.sync();
 
         setTitle("懒人");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dawerLyout, getToolbar(), 0, 0);

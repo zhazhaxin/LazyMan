@@ -4,21 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.alibaba.sdk.android.oss.model.OSSException;
 import com.jude.library.imageprovider.ImageProvider;
 import com.jude.library.imageprovider.OnImageSelectListener;
 
-import java.io.File;
-
 import cn.hotwoo.alien.servicelife.app.BasePresenter;
-import cn.hotwoo.alien.servicelife.config.API;
-import cn.hotwoo.alien.servicelife.model.UserModel;
-import cn.hotwoo.alien.servicelife.model.callback.StatusCallback;
-import cn.hotwoo.alien.servicelife.util.FileManager;
 import cn.hotwoo.alien.servicelife.util.Utils;
-import cn.hotwoo.oss.CompressImgTool;
-import cn.hotwoo.oss.OSSManager;
-import cn.hotwoo.oss.callback.CallBack;
 
 /**
  * Created by alien on 2015/8/30.
@@ -50,7 +40,6 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
                     String[] division = uriFile.split("//");
                     uriFile = division[1];
                 }
-                compressPath = CompressImgTool.compressImageFile(uriFile, FileManager.getInstance().getCacheDir(FileManager.Dir.IMAGE), 200, 200);
                 getView().showImage("file://" + compressPath);
                 getView().dismissProgress();
             }
@@ -81,27 +70,7 @@ public class ModifyFacePresenter extends BasePresenter<ModifyFaceActivity> {
             return;
         }
         getView().showProgress("图片上传中");
-        OSSManager.resumableUpload(compressPath, new CallBack() {
-            @Override
-            public void callback(String objectKey) {
-                String face = API.ALIYUN_EDNPOINT + File.separator + objectKey;
-                UserModel.getInstance().updateFace(face, new StatusCallback() {
-                    @Override
-                    public void success(String response) {
-                        UserModel.getInstance().updateLocalData();
-                        Utils.Toast("头像更换成功");
-                        getView().finish();
-                    }
-                });
 
-            }
-
-            @Override
-            public void error(OSSException e) {
-                Utils.Toast("添加失败");
-                getView().dismissProgress();
-            }
-        });
     }
 
     @Override

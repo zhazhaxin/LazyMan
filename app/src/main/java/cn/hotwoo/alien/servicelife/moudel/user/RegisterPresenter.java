@@ -4,8 +4,9 @@ import android.content.Intent;
 
 import cn.hotwoo.alien.servicelife.app.BasePresenter;
 import cn.hotwoo.alien.servicelife.model.UserModel;
-import cn.hotwoo.alien.servicelife.model.callback.StatusCallback;
+import cn.hotwoo.alien.servicelife.model.bean.ResponseInfo;
 import cn.hotwoo.alien.servicelife.util.Utils;
+import rx.Observer;
 
 /**
  * Created by alien on 2015/8/14.
@@ -17,25 +18,25 @@ public class RegisterPresenter extends BasePresenter<RegisterActivity> {
         super.onCreateView(view);
     }
 
-    public void register(String name,String password){
+    public void register(String name, String password) {
         getView().showProgress();
-        String realPass= Utils.md5(password);
-        UserModel.getInstance().userRegister(name, realPass, new StatusCallback() {
+        UserModel.getInstance().register(name, password, new Observer<ResponseInfo>() {
             @Override
-            public void success(String response) {
-                Utils.Toast("注册成功");
-                getView().startActivity(new Intent(getView(),ModifyInfoActivity.class));
-                getView().finish();
+            public void onCompleted() {
+
             }
 
             @Override
-            public void result(int status) {
-                super.result(status);
-                if (status==201){
-                    getView().dismissProgress();
-                    Utils.Toast("用户名重复");
-                }
+            public void onError(Throwable e) {
 
+            }
+
+            @Override
+            public void onNext(ResponseInfo s) {
+                Utils.Log("register--info:" + s.getInfo());
+                Utils.Toast("注册成功");
+                getView().startActivity(new Intent(getView(), ModifyInfoActivity.class));
+                getView().finish();
             }
         });
     }

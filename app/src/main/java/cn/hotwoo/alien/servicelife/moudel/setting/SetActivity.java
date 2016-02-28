@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jude.beam.bijection.RequiresPresenter;
-import com.umeng.fb.FeedbackAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,8 +47,6 @@ public class SetActivity extends BaseActivity<SetPresenter> {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FeedbackAgent agent = new FeedbackAgent(SetActivity.this);
-                agent.startFeedbackActivity();
             }
         });
     }

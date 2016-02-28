@@ -132,4 +132,24 @@ public class User implements Serializable{
     public void setSchool(String school) {
         this.school = school;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", birth=" + birth +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", phone=" + phone +
+                ", qq=" + qq +
+                ", name='" + name + '\'' +
+                ", sign='" + sign + '\'' +
+                ", face='" + face + '\'' +
+                ", school='" + school + '\'' +
+                ", major='" + major + '\'' +
+                ", intro='" + intro + '\'' +
+                ", loverSpace='" + loverSpace + '\'' +
+                ", lovePassword='" + lovePassword + '\'' +
+                '}';
+    }
 }

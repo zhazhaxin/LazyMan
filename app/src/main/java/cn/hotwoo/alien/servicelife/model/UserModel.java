@@ -6,19 +6,18 @@ import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 
 import cn.hotwoo.alien.servicelife.config.API;
-import cn.hotwoo.alien.servicelife.model.bean.BaseBean;
+import cn.hotwoo.alien.servicelife.model.bean.ResponseInfo;
 import cn.hotwoo.alien.servicelife.model.bean.User;
 import cn.hotwoo.alien.servicelife.model.callback.DataCallback;
 import cn.hotwoo.alien.servicelife.model.callback.StatusCallback;
+import cn.hotwoo.alien.servicelife.model.server.SchedulerTransformer;
+import cn.hotwoo.alien.servicelife.model.server.ServiceAPIModule;
 import cn.hotwoo.alien.servicelife.util.FileManager;
 import cn.hotwoo.alien.servicelife.util.Utils;
 import de.greenrobot.event.EventBus;
-import retrofit.Call;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.http.Field;
-import retrofit.http.FormUrlEncoded;
-import retrofit.http.POST;
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by alien on 2015/8/13.
@@ -27,8 +26,6 @@ public class UserModel extends AbsModel {
 
     public static final String USERINFO = "userInfo";
     public static final String UPDATE_USER_DATA = "updateUserInfo";
-    private static UpdateFaceService updateFaceService;
-    private static Retrofit retrofit;
 
     @Override
     public void onAppCreate(Context context) {
@@ -36,31 +33,6 @@ public class UserModel extends AbsModel {
         if (getUserFromFile() != null) {
             updateLocalData();
         }
-        updateFaceService = getService();
-    }
-
-    public UpdateFaceService getService() {
-        return getRetrofit().create(UpdateFaceService.class);
-    }
-
-    public Retrofit getRetrofit() {
-        if (retrofit == null) {
-            synchronized (this) {
-                if (retrofit == null) {
-                    retrofit = new Retrofit.Builder()
-                            .baseUrl(API.BASEURL)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-                }
-            }
-        }
-        return retrofit;
-    }
-
-    private interface UpdateFaceService {
-        @FormUrlEncoded
-        @POST("updateFace.php")
-        Call<BaseBean> updateFace(@Field("id") int id, @Field("face") String img);
     }
 
     public static UserModel getInstance() {
@@ -97,16 +69,11 @@ public class UserModel extends AbsModel {
      * @param name
      * @param password
      */
-    public void userLogin(String name, String password, StatusCallback callback) {
-        RequestMap param = new RequestMap();
-        param.put("name", name);
-        param.put("password", password);
-        RequestManager.getInstance().post(API.login, param, callback.add(new DataCallback<User>() {
-            @Override
-            public void success(User data) {
-                saveUserToFile(data);
-            }
-        }));
+    public Observable<User> login(String name, String password) {
+        return ServiceAPIModule.getInstance()
+                .providerServiceAPI()
+                .login(name, password)
+                .compose(new SchedulerTransformer<User>());
     }
 
     /**
@@ -114,42 +81,22 @@ public class UserModel extends AbsModel {
      *
      * @param name
      * @param password
-     * @param callback
      */
-    public void userRegister(String name, String password, StatusCallback callback) {
-        RequestMap param = new RequestMap();
-        param.put("name", name);
-        param.put("password", password);
-        param.put("face", API.DEFAULT_FACE);
-        RequestManager.getInstance().post(API.register, param, callback.add(new DataCallback<User>() {
-
-            @Override
-            public void success(User data) {
-                saveUserToFile(data);
-            }
-        }));
+    public void register(String name, String password, Observer<ResponseInfo> observer) {
+        ServiceAPIModule.getInstance().providerServiceAPI().register(name, password, API.DEFAULT_FACE)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
     /**
      * 修改个人信息
-     *
-     * @param u
-     * @param callback
      */
-    public void updateUserData(User u, StatusCallback callback) {
-        RequestMap param = new RequestMap();
-        param.put("id", getUserFromFile().getId() + "");
-        param.put("name", u.getName());
-        param.put("sign", u.getSign());
-        param.put("school", u.getSchool());
-        param.put("gender", u.getGender() + "");
-        param.put("birth", u.getBirth() + "");
-        param.put("age", u.getAge() + "");
-        param.put("major", u.getMajor());
-        param.put("phone", u.getPhone() + "");
-        param.put("qq", u.getQq() + "");
-        param.put("intro", u.getIntro());
-        RequestManager.getInstance().post(API.updateUserData, param, callback);
+    public void updateUserData(User user, Observer<ResponseInfo> observer) {
+        ServiceAPIModule.getInstance().providerServiceAPI()
+                .updateUserData(user.getId(), user.getName(), user.getSign(), user.getSchool(), user.getGender(),
+                        user.getBirth(), user.getAge(), user.getMajor(), user.getPhone(), user.getQq(), user.getIntro())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
     /**
@@ -158,11 +105,10 @@ public class UserModel extends AbsModel {
      * @param img
      * @return
      */
-    public void updateFace(final String img, StatusCallback callback) {
-        RequestMap params = new RequestMap();
-        params.put("id", getUserFromFile().getId() + "");
-        params.put("face", img);
-        RequestManager.getInstance().post(API.updateFace, params, callback);
+    public void updateFace(final String img, Observer<ResponseInfo> observer) {
+        ServiceAPIModule.getInstance().providerServiceAPI().updateFace(getUserFromFile().getId(), img)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
     }
 
     /**

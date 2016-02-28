@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.jude.beam.bijection.RequiresPresenter;
 
 import butterknife.Bind;
@@ -61,9 +60,7 @@ public class CreateLovespaceActivity extends BaseActivity<CreateLoverspacePresen
                         getPresenter().createLoverSpace(name,password);
                     }
                 });
-                new MaterialDialog.Builder(CreateLovespaceActivity.this)
-                        .customView(cardView, false)
-                        .show();
+
             }
         });
 
@@ -82,9 +79,7 @@ public class CreateLovespaceActivity extends BaseActivity<CreateLoverspacePresen
                         getPresenter().loginLoverSpace(name,password);
                     }
                 });
-                new MaterialDialog.Builder(CreateLovespaceActivity.this)
-                        .customView(cardView, false)
-                        .show();
+
             }
         });
     }

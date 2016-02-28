@@ -20,8 +20,6 @@ import cn.hotwoo.alien.servicelife.R;
 import cn.hotwoo.alien.servicelife.model.UserModel;
 import cn.hotwoo.alien.servicelife.model.bean.User;
 import cn.hotwoo.alien.servicelife.moudel.dictionary.DictionaryActivity;
-import cn.hotwoo.alien.servicelife.moudel.lbs.WalkActivity;
-import cn.hotwoo.alien.servicelife.moudel.lbs.WeatherActivity;
 import cn.hotwoo.alien.servicelife.moudel.lover.CreateLovespaceActivity;
 import cn.hotwoo.alien.servicelife.moudel.lover.LoverSpaceListActivity;
 import cn.hotwoo.alien.servicelife.moudel.note.NoteListActivity;
@@ -109,12 +107,7 @@ public class DawerFragment extends BeamFragment<DawerPresenter> {
             }
         });
 
-        viewWeather.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), WeatherActivity.class));
-            }
-        });
+
         viewDict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,12 +115,7 @@ public class DawerFragment extends BeamFragment<DawerPresenter> {
             }
         });
 
-        viewWalk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), WalkActivity.class));
-            }
-        });
+
 
         viewSet.setOnClickListener(new View.OnClickListener() {
             @Override

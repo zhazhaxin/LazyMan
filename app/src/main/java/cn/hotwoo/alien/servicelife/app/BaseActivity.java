@@ -6,10 +6,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.jude.beam.bijection.BeamAppCompatActivity;
 import com.jude.beam.bijection.RequiresPresenter;
-import com.umeng.analytics.MobclickAgent;
 
 import cn.hotwoo.alien.servicelife.R;
 
@@ -20,7 +18,6 @@ import cn.hotwoo.alien.servicelife.R;
 public class BaseActivity<T extends BasePresenter> extends BeamAppCompatActivity<T> {
 
     private Toolbar toolbar;
-    private MaterialDialog materialDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,38 +55,19 @@ public class BaseActivity<T extends BasePresenter> extends BeamAppCompatActivity
     }
 
     public void showProgress() {
-        materialDialog = new MaterialDialog.Builder(this)
-                .content("请稍候")
-                .progress(true, 100)
-                .show();
+
     }
 
     public void showProgress(String title) {
-        materialDialog = new MaterialDialog.Builder(this)
-                .title(title)
-                .content("请稍候")
-                .progress(true, 100)
-                .show();
+
     }
 
     public void dismissProgress() {
-        materialDialog.dismiss();
+
     }
 
     public <T extends View> T $(int layout) {
         return (T) findViewById(layout);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MobclickAgent.onResume(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        MobclickAgent.onPause(this);
     }
 
     @Override

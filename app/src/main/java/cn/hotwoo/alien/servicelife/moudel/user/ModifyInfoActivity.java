@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.beam.bijection.RequiresPresenter;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -158,78 +156,19 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     }
 
     public void showGenderDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("请选择")
-                .items(new String[]{"女", "男"})
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
-                        if (which == 0) {
-                            gender.setText("女");
-                        } else {
-                            gender.setText("男");
-                        }
-                        getPresenter().setGender(which);
-                    }
-                })
-                .show();
+
     }
 
     public void showNameDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("输入呢称")
-                .inputType(InputType.TYPE_CLASS_TEXT)
-                .inputMaxLength(8)
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                        if (input.toString().trim().isEmpty()) {
-                            Utils.Toast("不能为空");
-                            getPresenter().setName(name.getText().toString());
-                            return;
-                        }
-                        getPresenter().setName(input.toString());
-                        name.setText(input.toString());
-                    }
-                }).show();
+
     }
 
     public void showSignDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("输入签名")
-                .inputType(InputType.TYPE_CLASS_TEXT)
-                .inputMaxLength(32)
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                        if (input.toString().trim().isEmpty()) {
-                            Utils.Toast("不能为空");
-                            getPresenter().setSign(sign.getText().toString());
-                            return;
-                        }
-                        getPresenter().setSign(input.toString());
-                        sign.setText(input.toString());
-                    }
-                }).show();
+
     }
 
     public void showSchoolDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("输入学校")
-                .inputType(InputType.TYPE_CLASS_TEXT)
-                .inputMaxLength(16)
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                        if (input.toString().trim().isEmpty()) {
-                            Utils.Toast("不能为空");
-                            getPresenter().setSchool(school.getText().toString());
-                            return;
-                        }
-                        getPresenter().setSchool(input.toString());
-                        school.setText(input.toString());
-                    }
-                }).show();
+
     }
 
     public void showBirthDialog() {
@@ -266,60 +205,15 @@ public class ModifyInfoActivity extends BaseActivity<ModifyInfoPresenter> {
     }
 
     public void showMajorDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("专业")
-                .inputType(InputType.TYPE_CLASS_TEXT)
-                .inputMaxLength(16)
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                        if (input.toString().trim().isEmpty()) {
-                            Utils.Toast("不能为空");
-                            getPresenter().setMajor(major.getText().toString());
-                            return;
-                        }
-                        getPresenter().setMajor(input.toString());
-                        major.setText(input.toString());
-                    }
-                }).show();
+
     }
 
     public void showPhoneDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("电话")
-                .inputType(InputType.TYPE_NUMBER_VARIATION_NORMAL)
-                .inputMaxLength(11)
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog materialDialog, CharSequence input) {
-                        if (input.toString().trim().isEmpty()) {
-                            Utils.Toast("不能为空");
-                            getPresenter().setPhone(Long.valueOf(phone.getText().toString()));
-                            return;
-                        }
-                        getPresenter().setPhone(Long.valueOf(input.toString()));
-                        phone.setText(input.toString());
-                    }
-                }).show();
+
     }
 
     public void showQQDialog() {
-        new MaterialDialog.Builder(ModifyInfoActivity.this)
-                .title("QQ")
-                .inputType(InputType.TYPE_NUMBER_VARIATION_NORMAL)
-                .inputMaxLength(12)
-                .input("", "", new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(MaterialDialog dialog, CharSequence input) {
-                        if (input.toString().trim().isEmpty()) {
-                            Utils.Toast("不能为空");
-                            getPresenter().setQQ(Long.valueOf(qq.getText().toString()));
-                            return;
-                        }
-                        getPresenter().setQQ(Long.valueOf(input.toString()));
-                        qq.setText(input.toString());
-                    }
-                }).show();
+
     }
 
     public void setAge(int a) {
