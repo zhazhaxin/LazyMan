@@ -16,9 +16,6 @@ import cn.hotwoo.alien.servicelife.util.FileManager;
 import cn.hotwoo.alien.servicelife.util.Utils;
 import de.greenrobot.event.EventBus;
 import rx.Observable;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by alien on 2015/8/13.
@@ -80,22 +77,18 @@ public class UserModel extends AbsModel {
      * @param name
      * @param password
      */
-    public void register(String name, String password, Observer<ResponseInfo> observer) {
-        ServiceAPIModule.getInstance().providerServiceAPI().register(name, password, API.DEFAULT_FACE)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+    public Observable<ResponseInfo> register(String name, String password) {
+        return ServiceAPIModule.getInstance().providerServiceAPI().register(name, password, API.DEFAULT_FACE).compose(new SchedulerTransformer<ResponseInfo>());
     }
 
     /**
      * 修改个人信息
      */
-    public void updateUserData(User user, Observer<ResponseInfo> observer) {
-        ServiceAPIModule.getInstance().providerServiceAPI()
+    public Observable<ResponseInfo> updateUserData(User user) {
+        return ServiceAPIModule.getInstance().providerServiceAPI()
                 .updateUserData(user.getId(), user.getName(), user.getSign(), user.getSchool(), user.getGender(),
                         user.getBirth(), user.getAge(), user.getMajor(), user.getPhone(), user.getQq(), user.getIntro())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+                .compose(new SchedulerTransformer<ResponseInfo>());
     }
 
     /**
@@ -104,10 +97,8 @@ public class UserModel extends AbsModel {
      * @param img
      * @return
      */
-    public void updateFace(final String img, Observer<ResponseInfo> observer) {
-        ServiceAPIModule.getInstance().providerServiceAPI().updateFace(getUserFromFile().getId(), img)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
+    public Observable<ResponseInfo> updateFace(final String img) {
+        return ServiceAPIModule.getInstance().providerServiceAPI().updateFace(getUserFromFile().getId(), img).compose(new SchedulerTransformer<ResponseInfo>());
     }
 
     /**

@@ -33,6 +33,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         setContentView(R.layout.user_activity_login);
         ButterKnife.bind(this);
 
+        name.getEditText().setText(getIntent().getStringExtra(RegisterPresenter.NAME));
+        password.getEditText().setText(getIntent().getStringExtra(RegisterPresenter.PASSWORD));
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

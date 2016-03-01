@@ -8,7 +8,7 @@ import cn.hotwoo.alien.servicelife.model.bean.ResponseInfo;
 import cn.hotwoo.alien.servicelife.model.bean.User;
 import cn.hotwoo.alien.servicelife.util.Utils;
 import de.greenrobot.event.EventBus;
-import rx.Observer;
+import rx.functions.Action1;
 
 /**
  * Created by alien on 2015/8/14.
@@ -105,19 +105,9 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoActivity> {
         if (user.getIntro() == null) {
             user.setIntro(oldUserData.getIntro());
         }
-        UserModel.getInstance().updateUserData(user, new Observer<ResponseInfo>() {
+        UserModel.getInstance().updateUserData(user).subscribe(new Action1<ResponseInfo>() {
             @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Utils.Toast("网络错误");
-            }
-
-            @Override
-            public void onNext(ResponseInfo s) {
+            public void call(ResponseInfo responseInfo) {
                 Utils.Toast("已保存");
                 UserModel.getInstance().updateLocalData(); //更新用户信息
                 getView().finish();

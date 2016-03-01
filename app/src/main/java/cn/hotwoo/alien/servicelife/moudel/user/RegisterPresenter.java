@@ -6,36 +6,32 @@ import cn.hotwoo.alien.servicelife.app.BasePresenter;
 import cn.hotwoo.alien.servicelife.model.UserModel;
 import cn.hotwoo.alien.servicelife.model.bean.ResponseInfo;
 import cn.hotwoo.alien.servicelife.util.Utils;
-import rx.Observer;
+import rx.functions.Action1;
 
 /**
  * Created by alien on 2015/8/14.
  */
 public class RegisterPresenter extends BasePresenter<RegisterActivity> {
 
+    public static final String NAME = "NAME";
+    public static final String PASSWORD = "PASSWORD";
+
     @Override
     protected void onCreateView(RegisterActivity view) {
         super.onCreateView(view);
     }
 
-    public void register(String name, String password) {
+    public void register(final String name, final String password) {
         getView().showProgress();
-        UserModel.getInstance().register(name, password, new Observer<ResponseInfo>() {
+        UserModel.getInstance().register(name, password).subscribe(new Action1<ResponseInfo>() {
             @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Utils.Log("register--Throwable:" + e.getMessage());
-            }
-
-            @Override
-            public void onNext(ResponseInfo s) {
-                Utils.Log("register--info:" + s.getInfo());
+            public void call(ResponseInfo responseInfo) {
+                Utils.Log("register--info:" + responseInfo.getInfo());
                 Utils.Toast("注册成功");
-                getView().startActivity(new Intent(getView(), ModifyInfoActivity.class));
+                Intent intent = new Intent(getView(), LoginActivity.class);
+                intent.putExtra(NAME,name);
+                intent.putExtra(PASSWORD,password);
+                getView().startActivity(intent);
                 getView().finish();
             }
         });
